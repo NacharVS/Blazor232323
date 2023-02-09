@@ -23,5 +23,11 @@
             users.Add(new User("Juliya", "fff@mail.ru", 23));
             return users;
         }
+        public static List<User> GetSingleUser()
+        {
+            List<User> users = new List<User>();
+            users.Add(new User("Vadim", "qqq@mail.ru", 33));
+            return users;
+        }
     }
 }

@@ -15,7 +15,7 @@
                     <td>@item.Name</td>
                     <td>@item.Email</td>
                     <td>@item.Age</td>
-                    <td><button class="btn btn-danger" @onclick="()=> RemoveFromList(item)">Delete</button></td>
+                    <td><button class="btn btn-danger"></button></td>
                 </tr>
             }
         </tbody>
@@ -33,8 +33,14 @@
         <input class="alert-info"placeholder="Age"@bind-value="uage"/>
     </div>
         <div class="col">
-        <button class="btn btn-info" @onclick="AddToList">Add To List</button>
+        <button class="btn btn-info" >Add To List</button>
     </div>
+</div>
+
+<div class="alert alert-secondary mt-4">
+  <div class="col"><strong>@users[0].Name</strong> </div>  
+  <div class="col">Age:@users[0].Age </div>  
+  <div class="col"><a class="font-weight-bold link-dark">@users[0].Email</a> </div>  
 </div>
 
 @code {
@@ -43,23 +49,23 @@
     string umail;
     string uage;
 
-    protected override void OnInitialized()
-    {
-        users = User.GetUsers();
-    }
+    //protected override void OnInitialized()
+    //{
+    //    users = User.GetUsers();
+    //}
 
-    private void RemoveFromList(User userToRemove)
-    {
-        users.Remove(userToRemove);
-    }
+    //private void RemoveFromList(User userToRemove)
+    //{
+    //    users.Remove(userToRemove);
+    //}
 
-    private void AddToList()
-    {
-        users.Add(new User(userName, umail, int.Parse(uage)));
-        userName = string.Empty;
-        umail = string.Empty;
-        uage = string.Empty;
-    }
+    //private void AddToList()
+    //{
+    //    users.Add(new User(userName, umail, int.Parse(uage)));
+    //    userName = string.Empty;
+    //    umail = string.Empty;
+    //    uage = string.Empty;
+    //}
 
 
 }
