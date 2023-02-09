@@ -1,0 +1,13 @@
+﻿@inject NavigationManager manager
+
+<button class="btn btn-primary" @onclick="Navigate">@Link.Title</button>
+
+@code {
+    [Parameter] public CustomLink Link { get; set; }
+
+    private void Navigate()
+    {
+        manager.NavigateTo(Link.Link);
+    }
+
+}

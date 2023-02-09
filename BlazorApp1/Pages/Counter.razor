@@ -1,23 +1,32 @@
 ﻿@page "/counter"
+@inject NavigationManager manager
 
 <PageTitle>Counter</PageTitle>
 
+@foreach(var item in links)
+{
+    <NavigationButtons Link="item"/>
+}
+
 <h1>Counter</h1>
 
-<Table />
+
 
 
 
 @code {
-    List<User> users;
+    List<CustomLink> links;
 
     protected override void OnInitialized()
     {
-        users = User.GetUsers();
+        links = CustomLink.getCustomLinks();
     }
     private int currentCount = 0;
 
-    
+    private void NavigateToIndex()
+    {
+        manager.NavigateTo("/");
+    }
 
 
 }

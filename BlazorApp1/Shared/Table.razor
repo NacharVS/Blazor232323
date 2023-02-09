@@ -1,4 +1,6 @@
-﻿<div class="row">
+﻿@if(Users.Count > 1)
+{
+    <div class="row">
     <table class="table">
         <thead>
             <tr>
@@ -9,7 +11,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(var item in users)
+            @foreach(var item in Users)
             {
                 <tr>
                     <td>@item.Name</td>
@@ -20,7 +22,16 @@
             }
         </tbody>
     </table>
+    </div>
+}
+else
+{
+<div class="alert alert-secondary mt-4">
+  <div class="col"><strong>@Users[0].Name</strong> </div>  
+  <div class="col">Age:@Users[0].Age </div>  
+  <div class="col"><a class="font-weight-bold link-dark">@Users[0].Email</a> </div>  
 </div>
+}
 
 <div class="row">
     <div class="col">
@@ -37,14 +48,10 @@
     </div>
 </div>
 
-<div class="alert alert-secondary mt-4">
-  <div class="col"><strong>@users[0].Name</strong> </div>  
-  <div class="col">Age:@users[0].Age </div>  
-  <div class="col"><a class="font-weight-bold link-dark">@users[0].Email</a> </div>  
-</div>
+
 
 @code {
-    List<User> users;
+    [Parameter] public List<User> Users { get; set; }
     string userName;
     string umail;
     string uage;
