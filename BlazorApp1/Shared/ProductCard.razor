@@ -1,0 +1,28 @@
+﻿@if (Trigger)
+{
+    <div class="alert-warning"  >
+        <label class="card-header">@Name</label>
+        <label class="card-header">@Mail</label>
+        <label class="card-header">@Age</label>
+        <label>Button</label>
+    </div>
+}
+else
+{
+        <div class="alert alert-secondary mt-4"  >
+        <label class="card-header">@Name</label>
+        <label class="card-header">@Mail</label>
+        <label class="card-header">@Age</label>
+        <label>Button</label>
+    </div>
+}
+
+
+
+@code {
+    [Parameter] public string Name { get; set; }
+    [Parameter] public string Mail { get; set; }
+    [Parameter] public string Age { get; set; }
+    [Parameter] public bool Trigger { get; set; }
+
+}

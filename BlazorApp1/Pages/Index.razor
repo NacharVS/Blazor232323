@@ -1,0 +1,28 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+<button @onclick="ChangeTrigger">Change</button>
+
+<ProductCard></ProductCard>
+
+@foreach(var item in list)
+{
+    <ProductCard Name=@item.Name Mail=@item.Email Age=@item.Age.ToString() Trigger=_trigger></ProductCard>
+}
+
+@code{
+    List<User> list;
+    private bool _trigger = false;
+
+    protected override void OnInitialized()
+    {
+        list = User.GetUsers();
+    }
+
+    private void ChangeTrigger()
+    {
+        _trigger = !_trigger;
+    }
+
+
+}

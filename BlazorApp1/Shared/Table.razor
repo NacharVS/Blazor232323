@@ -1,0 +1,65 @@
+﻿<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>E-mail</th>
+                <th>Age</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in users)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Email</td>
+                    <td>@item.Age</td>
+                    <td><button class="btn btn-danger" @onclick="()=> RemoveFromList(item)">Delete</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="row">
+    <div class="col">
+        <input class="alert-info" placeholder="User Name" @bind-value="userName"/>
+    </div>
+    <div class="col">
+        <input class="alert-info" placeholder="E-Mail" @bind-value="umail"/>
+    </div>
+    <div class="col">
+        <input class="alert-info"placeholder="Age"@bind-value="uage"/>
+    </div>
+        <div class="col">
+        <button class="btn btn-info" @onclick="AddToList">Add To List</button>
+    </div>
+</div>
+
+@code {
+    List<User> users;
+    string userName;
+    string umail;
+    string uage;
+
+    protected override void OnInitialized()
+    {
+        users = User.GetUsers();
+    }
+
+    private void RemoveFromList(User userToRemove)
+    {
+        users.Remove(userToRemove);
+    }
+
+    private void AddToList()
+    {
+        users.Add(new User(userName, umail, int.Parse(uage)));
+        userName = string.Empty;
+        umail = string.Empty;
+        uage = string.Empty;
+    }
+
+
+}
